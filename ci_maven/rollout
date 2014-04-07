@@ -4,11 +4,11 @@ source "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/constraints"
 
 echo "Deploying..."
 cd "$CODEBASE_DIR"
-cctrlapp $APP_NAME/default deploy --containers 1
+echo "TODO cctrlapp $APP_NAME/default deploy --containers 1"
 
 echo "Waiting for app up and running..."
 sleep 20
-"TODO cctrlapp $APP_NAME/default details | grep $(git rev-parse HEAD)"
+echo "TODO cctrlapp $APP_NAME/default details | grep $(git rev-parse HEAD)"
 
 if [ -z "$1" ]; then
     echo "Skip set tag" >&2
