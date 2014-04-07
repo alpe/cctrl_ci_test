@@ -4,7 +4,8 @@ source "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/constraints"
 
 CCTRL_REMOTE="ssh://$APP_NAME@$CCTRL_HOST/repository.git"
 
-cd $CODEBASE_DIR
+
+cd "$CODEBASE_DIR"
 echo "Install dependencies & run tests"
 mvn clean install
 
