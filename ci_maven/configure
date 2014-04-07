@@ -13,4 +13,4 @@ echo "Update configurations ..."
 ENV_NAME=$1
 CONFIG_DIR=$2
 
-cctrlapp $APP_NAME/default config.add -f `paste -d\ -s "$CONFIG_DIR/$APP_NAME/$ENV_NAME`"
+cctrlapp $APP_NAME/default config.add -f `paste -d\ -s "$CONFIG_DIR/$APP_NAME/$ENV_NAME"`
