@@ -1,0 +1,21 @@
+#!/bin/bash -e
+
+source "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/constraints"
+
+echo "Deploying..."
+cctrlapp $APP_NAME/default deploy --containers 1
+
+echo "Waiting for app up and running..."
+sleep 20
+cctrlapp $APP_NAME/default details | grep $(git rev-parse HEAD)
+
+if [ -z "$1" ]; then
+    echo "Skip set tag" >&2
+    exit 0
+fi
+
+DATE=$(date +%Y%m%d)
+DEPLOY_TAG="$1deploy-$DATE"
+echo "Tagging as $DEPLOY_TAG..."
+git tag -f $DEPLOY_TAG
+git push origin $DEPLOY_TAG -f

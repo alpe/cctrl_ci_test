@@ -1,0 +1,12 @@
+#!/bin/bash -e
+
+source "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/constraints"
+
+CCTRL_REMOTE="ssh://$APP_NAME@$CCTRL_HOST/repository.git"
+
+cd $WORKSPACE
+echo "Install dependencies & run tests"
+mvn clean install
+
+echo "Pushing to $CCTRL_REMOTE..."
+git push $CCTRL_REMOTE +HEAD:master
